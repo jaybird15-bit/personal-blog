@@ -1,0 +1,98 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Post</title>
+    <link rel="stylesheet" href="theme.css" />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="index.html">Homepage</a>
+        <a href="new-post.html">Create Post</a>
+        <a href="signup.html">Signup</a>
+        <a href="login.html">Login</a>
+        <a href="logout.html">Logout</a>
+      </nav>
+    </header>
+    <main>
+      <form class="post-form">
+        <div class="error"></div>
+        <div class="message"></div>
+        <h1>Create Post</h1>
+        <label class="big-label">
+          Title: <span><input type="text" name="title" /></span>
+        </label>
+        <div class="row">
+          <label>
+            Post Content:
+            <textarea name="content"></textarea>
+          </label>
+        </div>
+        <label>
+          Tags:
+          <span
+            ><input type="text" name="tags" placeholder="tag1,tag2,tag3"
+          /></span>
+        </label>
+        <footer>
+          <button>Post</button>
+        </footer>
+      </form>
+    </main>
+    <footer></footer>
+    <script>
+      (async () => {
+        async function getCurrentUser() {
+          const response = await fetch("api/current-user.php", {
+            method: "GET",
+            credentials: "include",
+          });
+          return await response.json();
+        }
+
+        const user = await getCurrentUser();
+        if (!user) {
+          location.href = "login.html";
+          return;
+        }
+
+        const form = document.querySelector("form");
+        const error = form.querySelector(".error");
+        const message = form.querySelector(".message");
+
+        form.onsubmit = async (e) => {
+          // Prevent the form from reloading the page (the default)
+          e.preventDefault();
+          error.innerHTML = "";
+          message.innerHTML = "";
+
+          const title = document.querySelector("[name='title']").value;
+          const content = document.querySelector("[name='content']").value;
+          const tags = document.querySelector("[name='tags']").value;
+
+          const response = await fetch("api/new-post.php", {
+            method: "POST",
+            credentials: "include",
+            body: JSON.stringify({
+              title: title,
+              content: content,
+              tags: tags,
+            }),
+          });
+          // Parse from a JSON to an object.
+          const data = await response.json();
+
+          // Was there an error?
+          if (!response.ok) {
+            error.innerHTML = data.message;
+          } else {
+            form.reset();
+            message.innerHTML = data.message;
+          }
+        };
+      })();
+    </script>
+  </body>
+</html>

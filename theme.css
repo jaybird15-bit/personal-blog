@@ -48,38 +48,38 @@ nav a:hover {
   padding: 0.8em;
 }
 
-.movie-info .row > * {
+.post-form .row > * {
   width: 100%;
 }
 
-.movie-info {
+.post-form {
   display: flex;
   flex-wrap: wrap;
   padding: 1em;
 }
 
-.movie-info h1,
-.movie-info h3 {
+.post-form h1,
+.post-form h3 {
   width: 100%;
 }
 
-.movie-info label {
+.post-form label {
   display: inline-flex;
   flex-direction: column;
   margin-right: 1em;
   margin-bottom: 1em;
 }
 
-.movie-info label span {
+.post-form label span {
   font-size: 3em;
   font-weight: bold;
 }
 
-.movie-info .big-label span input {
+.post-form .big-label span input {
   font-size: 1em;
 }
 
-.movie-info section {
+.post-form section {
   flex-basis: 50%;
   flex-grow: 1;
   min-width: 300px;
@@ -113,21 +113,21 @@ nav a:hover {
   cursor: pointer;
 }
 
-.movie-info textarea {
+.post-form textarea {
   width: 100%;
   min-height: 200px;
 }
 
-.movie-info input[type="text"] {
+.post-form input[type="text"] {
   min-width: 300px;
 }
 
-.movie-info footer {
+.post-form footer {
   margin-top: 1em;
   width: 100%;
 }
 
-.movie-info footer button {
+.post-form footer button {
   font-size: 2em;
   padding: 0.2em 0.4em;
   color: white;
@@ -138,7 +138,7 @@ nav a:hover {
 }
 
 /* NOTE: Select all elements with name="year" attribute */
-.movie-info input[name="year"] {
+.post-form input[name="year"] {
   max-width: 4em;
   min-width: initial;
 }

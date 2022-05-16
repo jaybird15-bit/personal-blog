@@ -1,0 +1,144 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+}
+
+/* NOTE: Select all header(s) that are CHILDREN of the body */
+body > header {
+  background-color: rgb(49, 49, 49);
+  margin: 0;
+}
+
+nav {
+  display: flex;
+}
+
+/* NOTE: Select all <a>'s inside of a <nav> */
+nav a {
+  color: white;
+  padding: 1em;
+  text-decoration: none;
+}
+
+/* NOTE: Select all <a>'s in a "hovered" state, inside of a <nav> */
+nav a:hover {
+  background-color: rgb(61, 61, 61);
+}
+
+.row {
+  width: 100%;
+}
+
+.error {
+  color: red;
+}
+
+.userForm {
+  max-width: 400px;
+  margin: auto;
+}
+
+.userForm input,
+.userForm button {
+  width: 100%;
+  padding: 0.8em;
+}
+
+.movie-info .row > * {
+  width: 100%;
+}
+
+.movie-info {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 1em;
+}
+
+.movie-info h1,
+.movie-info h3 {
+  width: 100%;
+}
+
+.movie-info label {
+  display: inline-flex;
+  flex-direction: column;
+  margin-right: 1em;
+  margin-bottom: 1em;
+}
+
+.movie-info label span {
+  font-size: 3em;
+  font-weight: bold;
+}
+
+.movie-info .big-label span input {
+  font-size: 1em;
+}
+
+.movie-info section {
+  flex-basis: 50%;
+  flex-grow: 1;
+  min-width: 300px;
+}
+
+.review-section main {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.review-section article {
+  flex-basis: 33%;
+  flex-grow: 1;
+  min-width: 300px;
+  padding: 0.3em;
+}
+
+.review-section article header {
+  font-size: 1.3em;
+  font-weight: bold;
+}
+
+.pagination-controls {
+  display: flex;
+  justify-content: center;
+}
+
+.pagination-controls span {
+  color: rgb(0, 102, 255);
+  padding: 0.5em;
+  cursor: pointer;
+}
+
+.movie-info textarea {
+  width: 100%;
+  min-height: 200px;
+}
+
+.movie-info input[type="text"] {
+  min-width: 300px;
+}
+
+.movie-info footer {
+  margin-top: 1em;
+  width: 100%;
+}
+
+.movie-info footer button {
+  font-size: 2em;
+  padding: 0.2em 0.4em;
+  color: white;
+  background-color: rgb(61, 116, 199);
+  border: none;
+  border-radius: 0.1em;
+  cursor: pointer;
+}
+
+/* NOTE: Select all elements with name="year" attribute */
+.movie-info input[name="year"] {
+  max-width: 4em;
+  min-width: initial;
+}

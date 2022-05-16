@@ -1,0 +1,81 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link rel="stylesheet" href="theme.css" />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="index.html">Homepage</a>
+        <a href="signup.html">Signup</a>
+        <a href="login.html">Login</a>
+        <a href="logout.html">Logout</a>
+      </nav>
+    </header>
+    <main>
+      <form class="userForm">
+        <h2>Login</h2>
+        <div class="error"></div>
+        <div class="message"></div>
+        <label>Email</label>
+        <input type="text" name="email" />
+        <label>Password</label>
+        <input type="password" name="password" />
+        <button>Login</button>
+      </form>
+      <script>
+        (async () => {
+          async function getCurrentUser() {
+            const response = await fetch("api/current-user.php", {
+              method: "GET",
+              credentials: "include",
+            });
+            return await response.json();
+          }
+
+          const user = await getCurrentUser();
+          if (user) {
+            location.href = "index.html";
+            return;
+          }
+
+          const form = document.querySelector("form");
+          const error = form.querySelector(".error");
+          const message = form.querySelector(".message");
+
+          form.onsubmit = async (e) => {
+            // Prevent the form from reloading the page (the default)
+            e.preventDefault();
+            error.innerHTML = "";
+            message.innerHTML = "";
+
+            const email = document.querySelector("[name='email']").value;
+            const password = document.querySelector("[name='password']").value;
+
+            const response = await fetch("api/login.php", {
+              method: "POST",
+              credentials: "include",
+              body: JSON.stringify({
+                email: email,
+                password: password,
+              }),
+            });
+            // Parse from a JSON to an object.
+            const data = await response.json();
+
+            // Was there an error?
+            if (!response.ok) {
+              error.innerHTML = data.message;
+            } else {
+              message.innerHTML = data.message;
+              location.href = "index.html";
+            }
+          };
+        })();
+      </script>
+    </main>
+  </body>
+</html>

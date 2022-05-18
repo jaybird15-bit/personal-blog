@@ -1,16 +1,35 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
 * {
   box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
 }
 
 html,
 body {
+  background: #f9f9fe;
   margin: 0;
+}
+
+body > header nav,
+body > main,
+body > footer {
+  max-width: 900px;
+  margin: auto;
 }
 
 /* NOTE: Select all header(s) that are CHILDREN of the body */
 body > header {
   background-color: rgb(49, 49, 49);
   margin: 0;
+}
+
+h1 {
+  font-size: 3em;
+}
+
+h2 {
+  font-size: 2em;
 }
 
 nav {
@@ -35,6 +54,11 @@ nav a:hover {
 
 .error {
   color: red;
+}
+
+.blogPosts h2 {
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 0.2em;
 }
 
 .userForm {

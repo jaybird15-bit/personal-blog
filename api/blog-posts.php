@@ -17,6 +17,8 @@ $query = "
         tags
     FROM
         blog_posts
+    ORDER BY
+        id DESC
 ";
 
 $statement = $mysql->prepare($query);
